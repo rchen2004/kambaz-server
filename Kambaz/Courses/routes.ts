@@ -4,6 +4,7 @@ import EnrollmentsDao from "../Enrollments/dao";
 export default function CourseRoutes(app, db) {
   const dao = CoursesDao(db);
   const enrollmentsDao = EnrollmentsDao(db);
+  
   const findAllCourses = (req, res) => {
     res.json(dao.findAllCourses());
   };

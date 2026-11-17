@@ -1,4 +1,5 @@
 import ModulesDao from "./dao";
+
 export default function ModuleRoutes(app, db) {
   const dao = ModulesDao(db);
 
