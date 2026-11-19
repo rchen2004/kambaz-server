@@ -2,9 +2,9 @@ import { v4 as uuidv4 } from "uuid";
 
 export default function AssignmentsDao(db) {
     
-    function findAssignmentsForModule(moduleId) {
+    function findAssignmentsForCourse(courseId) {
         const { assignments } = db;
-        return assignments.filter((assignment) => assignment.module === moduleId);
+        return assignments.filter((assignment) => assignment.course === courseId);
     }
 
     function createAssignment(assignment) {
@@ -21,12 +21,13 @@ export default function AssignmentsDao(db) {
     function updateAssignment(assignmentId, assignmentUpdates) {
         const { assignments } = db;
         const assignment = assignments.find((assignment) => assignment._id === assignmentId);
+        if (!assignment) return null;
         Object.assign(assignment, assignmentUpdates);
         return assignment;
     }
 
     return {
-        findAssignmentsForModule,
+        findAssignmentsForCourse,
         createAssignment,
         deleteAssignment,
         updateAssignment
